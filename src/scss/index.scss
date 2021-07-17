@@ -1,0 +1,13 @@
+@use 'includes/global';
+@use 'includes/components/header';
+
+$color: red;
+$color-blue: blue;
+
+body {
+  color: $color;
+}
+
+h1 {
+  color: $color-blue;
+}

@@ -1,0 +1,16 @@
+body {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+}
+
+.header {
+  color: green;
+}
+
+body {
+  color: red;
+}
+
+h1 {
+  color: blue;
+}
