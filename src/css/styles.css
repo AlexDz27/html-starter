@@ -12,5 +12,9 @@ body {
 }
 
 h1 {
-  color: blue;
+  color: red;
+}
+
+.my {
+  color: tomato;
 }

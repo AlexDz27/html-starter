@@ -2,13 +2,12 @@ const { src, dest, watch, series } = require('gulp');
 const browserSync = require('browser-sync').create();
 const sass = require('gulp-sass')(require('sass'));
 const rename = require('gulp-rename');
-const webpack = require('webpack-stream');
 
 const makeServer = () => {
   browserSync.init({
     server: { baseDir: 'src/' },
     notify: false,
-  })
+  });
 };
 
 const buildStyles = () => {
@@ -16,13 +15,13 @@ const buildStyles = () => {
     .pipe(sass().on('error', sass.logError))
     .pipe(rename('styles.css'))
     .pipe(dest('src/css'))
+    .pipe(browserSync.stream())
   ;
 };
 
 
-exports.buildStyles = buildStyles;
-exports.serve = makeServer;
+exports.default = () => {
+  makeServer();
 
-exports.watch = function() {
-  watch('src/scss/**/*.scss', series(buildStyles));
+  watch(['src/scss/**/*.scss', 'src/**/*.html'], series(buildStyles)).on('change', browserSync.reload);
 }
